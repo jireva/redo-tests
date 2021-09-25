@@ -1,0 +1,19 @@
+redo-tests: tests for redo
+
+redo is a build tool described but not shared by Daniel J. Bernstein
+<http://cr.yp.to/redo.html>.
+
+Without a canonical release,
+redo has stagnated under the weight of
+competing, incompatible, and increasingly bloated 
+
+These tests are designed using djb's description as the primary reference
+and strive to specify an ideal redo that is simple, minimal, and usable.
+
+Thanks to Nils Dagsson Moskopp for the original test suite
+<http://news.dieweltistgarnichtso.net/bin/redo-sh.html>.
+
+To run on different redos:
+
+	git clean -df
+	(export PATH=$PATH:<path to redo>; ./run)

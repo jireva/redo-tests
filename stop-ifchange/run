@@ -1,0 +1,16 @@
+#!/bin/sh
+date +%s > data
+redo a
+read a1 <a
+
+sleep 1
+
+date +%s > data
+redo a
+read a2 <a
+
+if [ $a1 = $a2 ]; then
+	echo 'PASS: not rebuilt when dep changed'
+else
+	echo 'FAIL: rebuilt when dep changed'
+fi

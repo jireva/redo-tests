@@ -1,0 +1,13 @@
+#!/bin/sh
+redo f.e g.e
+
+if grep f.e.do f.e; then
+  echo 'PASS: f.e.do' >&2
+else
+  echo 'FAIL: f.e.do' >&2
+fi
+if grep default.e.do g.e; then
+  echo 'PASS: g.e.do' >&2
+else
+  echo 'FAIL: g.e.do' >&2
+fi

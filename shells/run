@@ -1,0 +1,28 @@
+#!/bin/sh -e
+redo sh bash python awk
+
+read sh <sh
+read bash <bash
+read python <python
+read awk <awk
+
+if [ $sh = "sh" ]; then
+  echo 'PASS: sh' >&2
+else
+  echo 'FAIL: sh' >&2
+fi
+if [ $bash = "bash" ]; then
+  echo 'PASS: bash' >&2
+else
+  echo 'FAIL: bash' >&2
+fi
+if [ $python = "python" ]; then
+  echo 'PASS: python' >&2
+else
+  echo 'FAIL: python' >&2
+fi
+if [ $awk = "awk" ]; then
+  echo 'PASS: awk' >&2
+else
+  echo 'FAIL: awk' >&2
+fi

@@ -1,0 +1,17 @@
+#!/bin/sh
+redo a
+
+read a <a
+read b <d/b
+read c <d/d/c
+
+if [ $a -lt $b ]; then
+  echo 'FAIL: a > b' >&2
+else
+  echo 'PASS: a < b' >&2
+fi
+if [ $b -lt $c ]; then
+  echo 'FAIL: b > c' >&2
+else
+  echo 'PASS: b < c' >&2
+fi

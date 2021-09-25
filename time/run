@@ -1,0 +1,49 @@
+#!/bin/sh
+
+touch source
+redo all
+<target read timestamp_before
+
+sleep 1
+
+touch -a source
+redo all
+<target read timestamp_after
+
+if [ $timestamp_after -gt $timestamp_before ]; then
+  echo 'FAIL: rebuilt after fresh atime' >&2
+else
+  echo 'PASS: not rebuilt after fresh atime' >&2
+fi
+
+touch source
+redo all
+<target read timestamp_before
+
+sleep 1
+
+touch -m source
+redo all
+<target read timestamp_after
+
+if [ $timestamp_after -gt $timestamp_before ]; then
+  echo 'FAIL: rebuilt after fresh mtime with same hash' >&2
+else
+  echo 'PASS: not rebuilt after fresh mtime with same hash' >&2
+fi
+
+touch source
+redo all
+<target read timestamp_before
+
+sleep 1
+
+chmod a+x source
+redo all
+<target read timestamp_after
+
+if [ $timestamp_after -gt $timestamp_before ]; then
+  echo 'PASS: target rebuilt on fresh ctime' >&2
+else
+  echo 'FAIL: target not rebuilt on fresh ctime' >&2
+fi
