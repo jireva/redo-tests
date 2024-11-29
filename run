@@ -1,4 +1,5 @@
 #!/bin/sh
+echo TESTING `which redo` `which redo-ifchange` `which redo-ifcreate`
 for dir in *; do
 	if test -d $dir; then
 		(
