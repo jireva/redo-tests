@@ -1,0 +1,17 @@
+#!/bin/sh
+start=$(date +%s)
+timeout -s INT 2 redo too-long
+end=$(date +%s)
+if [ "$(( $end - $start ))" -lt "10" ]; then
+  echo "PASS: build interrupted" >&2
+else
+  echo "FAIL: interrupt signal blocked" >&2
+fi
+redo too-long
+read o <too-long
+
+if [ $start -lt $o ]; then
+  echo 'PASS: build succeeded after interrupt' >&2
+else
+  echo 'FAIL: build failed after interrupt' >&2
+fi
